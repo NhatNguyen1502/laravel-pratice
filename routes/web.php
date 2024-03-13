@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes9                                                                                                                                                                                    
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -15,9 +18,18 @@ use App\Http\Controllers\PageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,'index']);
+
+Route::get('/', function(){
+    $name = 'Nguyễn Lâm Nhật';
+    return view('home', ['name' => $name]);
+})-> name('home');
+
+Route::get('/pnv1', function(){
+    $name = '<i style="color:green">Nguyễn Lâm Nhật</i>';
+    return view('home', ['name' => $name]);
+})-> name('home');
+
 Route::post('/', function (Request $request) {
     $file = $request->file;
     // dd($file);
@@ -41,3 +53,6 @@ Route::get('/test', function () {
 
 Route::get('/aboutme', [PageController::class,'aboutme']);
 
+Route::prefix('user') -> group(function () {
+    Route::get('', [UserController::class, 'index']);
+});
