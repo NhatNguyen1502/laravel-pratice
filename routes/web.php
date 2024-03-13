@@ -53,6 +53,9 @@ Route::get('/test', function () {
 
 Route::get('/aboutme', [PageController::class,'aboutme']);
 
-Route::prefix('user') -> group(function () {
-    Route::get('', [UserController::class, 'index']);
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+
+    Route::get('/add', [UserController::class, 'add'])->name('add');
+    Route::post('/add', [UserController::class, 'postAdd'])->name('post-add');
 });

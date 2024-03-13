@@ -9,6 +9,7 @@
     @endif
     <h1>{{ $title }}</h1>
     <hr>
+    <a href="{{ route('users.add') }}"> <button>Thêm người dùng</button></a>
     <table class="table table-bordered">
         <thead>
             <tr>
