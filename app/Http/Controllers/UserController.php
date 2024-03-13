@@ -97,4 +97,24 @@ class UserController extends Controller
         return back()->with('msg', 'Cap nhat thanh cong');
     }
 
+    public function delete($id)
+    {
+        if (!empty($id)) {
+            $userDetail = $this->users->getDetail($id);
+            if (!empty($userDetail)) {
+                $deleteStatus = $this->users->deleteUser($id);
+                if ($deleteStatus) {
+                    $msg = 'Xoa thanh cong';
+                } else {
+                    $msg = 'Ban ko the xoa nguoi dung nay';
+                }
+            } else {
+                $msg = 'Nguoi dung khong ton tai';
+            }
+        } else {
+            $msg = 'Lien ket khong ton tai';
+        }
+        return redirect()->route('users.index')->with('msg', $msg);
+    }
+
 }
