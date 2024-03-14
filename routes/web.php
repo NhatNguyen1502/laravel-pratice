@@ -20,9 +20,25 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class,'index']);
 
+// Route::get('/', function(){
+//     $name = 'Nguyễn Lâm Nhật';
+//     return view('home', ['name' => $name]);
+// })-> name('home');
+
+// Route::get('/', function(){
+//     $title = "todicodedao.com";
+//     $alertMessage = "day la thong bao";
+//     return view('home', ['title' => $title, 'alertMessage' => $alertMessage]);
+// })-> name('home');
+
 Route::get('/', function(){
-    $name = 'Nguyễn Lâm Nhật';
-    return view('home', ['name' => $name]);
+    $posts = [
+        ['name' => 'post1'],
+        ['name' => 'post2'],
+        ['name' => 'post3'],
+        ['name' => 'post4'],
+    ];
+    return view('home', compact('posts'));
 })-> name('home');
 
 Route::get('/pnv1', function(){
@@ -62,4 +78,9 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/edit/{id}', [UserController::class, 'getEdit'])->name('edit');
     Route::post('/update', [UserController::class, 'postEdit'])->name('post-edit');
     Route::get('/delete/{id}', [UserController::class, 'delete'])->name('delete');
+});
+
+Route::get('/form', function() {
+    $tasks = [['name'=> 'First taks'],['name'=> 'Second taks'],];
+    return view('viewExcercise', compact('tasks')); 
 });
