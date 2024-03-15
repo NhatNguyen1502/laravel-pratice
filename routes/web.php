@@ -84,3 +84,8 @@ Route::get('/form', function() {
     $tasks = [['name'=> 'First taks'],['name'=> 'Second taks'],];
     return view('viewExcercise', compact('tasks')); 
 });
+
+Route::get('/dashboard', function() {
+    return view('viewExcercise2'); 
+});
+
