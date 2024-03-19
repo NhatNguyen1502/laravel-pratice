@@ -86,6 +86,11 @@ Route::get('/form', function() {
 });
 
 Route::get('/dashboard', function() {
-    return view('viewExcercise2'); 
+    return view('clients.dashboard'); 
+});
+
+Route::get('/component', function() {
+    $tasks = [['name'=>'task1'],['name'=>'task2'],['name'=>'task3']];
+    return view('component', compact('tasks'));
 });
 
