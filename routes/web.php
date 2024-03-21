@@ -21,7 +21,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', [HomeController::class,'index']);
 
 // Route::get('/', function(){
-//     $name = 'Nguyễn Lâm Nhật';
+//     $link = 'Nguyễn Lâm Nhật';
 //     return view('home', ['name' => $name]);
 // })-> name('home');
 
@@ -92,5 +92,11 @@ Route::get('/dashboard', function() {
 Route::get('/component', function() {
     $tasks = [['name'=>'task1'],['name'=>'task2'],['name'=>'task3']];
     return view('component', compact('tasks'));
+});
+
+Route::get('/shop', function() {
+    $sidebarItems = [['name'=>' Traditional  Wear1'],['name'=>' Traditional  Wear2'],['name'=>' Traditional  Wear3'],['name'=>' Traditional  Wear4'],['name'=>' Traditional  Wear5'],['name'=>' Traditional  Wear6'],['name'=>' Traditional  Wear7'],['name'=>' Traditional  Wear8'],['name'=>' Traditional  Wear9']];
+    $dealItems =[['link'=>'https://product.hstatic.net/200000726949/product/balki_black_001-002-043_main_sq_nt_2400x2400_b0e22a4821cf469f9df4fd00987daae2_master.jpg', 'conten'=>'good product'], ['link'=>'https://product.hstatic.net/200000726949/product/balki_black_001-002-043_main_sq_nt_2400x2400_b0e22a4821cf469f9df4fd00987daae2_master.jpg', 'conten'=>'good product'], ['link'=>'https://product.hstatic.net/200000726949/product/balki_black_001-002-043_main_sq_nt_2400x2400_b0e22a4821cf469f9df4fd00987daae2_master.jpg', 'conten'=>'good product'], ['link'=>'https://product.hstatic.net/200000726949/product/balki_black_001-002-043_main_sq_nt_2400x2400_b0e22a4821cf469f9df4fd00987daae2_master.jpg', 'conten'=>'good product'],['link'=>'https://product.hstatic.net/200000726949/product/balki_black_001-002-043_main_sq_nt_2400x2400_b0e22a4821cf469f9df4fd00987daae2_master.jpg', 'conten'=>'good product'],];
+    return view('layouts.shop', compact('sidebarItems', 'dealItems')); 
 });
 

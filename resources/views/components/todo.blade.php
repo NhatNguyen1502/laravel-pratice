@@ -13,6 +13,7 @@
         Todos
     </h1>
     {{ $slot }}
+    <h2>oke</h2>
 </body>
 
 </html>
