@@ -42,4 +42,25 @@ class Users extends Model
         return DB::statement($sql);
     }
 
+        public function learnQueryBuilder(){
+        $list = DB::table($this->table)
+        ->select('fullname as hoten','email','id')
+        // ->where('id', '>', 1)   
+        // ->where('id', '<>', 8)
+        // ->where('id', '>=', 8)
+        // ->where('id', '<=', 9)
+        // ->where([
+        //     // ['id',  '>=', 8],
+        //     // ['id',  '<=', 9],
+        //     'id'=> '8',
+        //     'fullname'=> 'Lâm Nhật',
+        // ])
+        ->where('id', 8)
+        ->orWhere('id', 9)
+        ->get();
+        dd($list);
+        $detail = DB::table($this->table)->first();
+        // dd($detail);
+    }
+
 }

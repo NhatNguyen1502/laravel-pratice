@@ -14,9 +14,14 @@ class UserController extends Controller
     }
 
     function index(){
-        $title ="Danh sách người dùng";
-        $users = $this->users->getAllUsers();
-        return view('clients.users.list', ['title' =>$title, 'users' =>$users]);
+        // $title ="Danh sách người dùng";
+        // $users = $this->users->getAllUsers();
+        // return view('clients.users.list', ['title' =>$title, 'users' =>$users]);
+        $title = 'Danh sách người dùng';
+        $this->users->learnQueryBuilder();
+        $users = new Users();
+        $userList = $this->users->getAllUsers();
+        return view('clients.users.lists', compact('title', 'userList'));
     }  
 
      public function add()
